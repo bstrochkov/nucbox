@@ -14,3 +14,9 @@
   - import_role:
       name: nucbox_server
     when: not _env_file_info.stat.exists
+
+  - command: docker-compose up -d
+    args:
+      chdir: "{{ deployment_app_root }}"
+    become: yes
+    when: not _env_file_info.stat.exists

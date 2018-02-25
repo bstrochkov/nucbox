@@ -1,0 +1,36 @@
+---
+# Uses:
+# - deployment_app_root
+# - env
+
+- name: "Removing nucbox"
+  hosts: "{{ override_hosts | default('prod') }}"
+
+  tasks:
+
+  - name: "Checking if app root folder exists"
+    stat: path="{{ deployment_app_root }}"
+    register: _app_root_info
+
+  - name: "Stopping and removing docker containers"
+    command: "docker-compose rm -vfs plex"
+    args:
+      chdir: "{{ deployment_app_root }}"
+    become: yes
+    when: _app_root_info.stat.exists
+
+  - name: "Removing app folder"
+    file:
+      path: "{{ deployment_app_root }}/"
+      state: absent
+    become: yes
+
+  - name: "Removing secondary folders"
+    file:
+      path: "{{ item }}/"
+      state: absent
+    with_items:
+      - "{{ env['PLEX_HOST_CONFIG_DIR'] }}"
+      - "{{ env['PLEX_HOST_TRANSCODE_DIR'] }}"
+      - "{{ env['PLEX_HOST_DATA_DIR'] }}"
+    when: remove_completely is defined

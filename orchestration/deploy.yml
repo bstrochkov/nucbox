@@ -10,7 +10,7 @@
 
   tasks:
 
-  - import_tasks: tasks/fill_env_file.yml
+  - import_tasks: roles/nucbox_server/tasks/fill_env_file.yml
   - name: "Updating the app"
     git:
       repo: "{{ app_repo }}"

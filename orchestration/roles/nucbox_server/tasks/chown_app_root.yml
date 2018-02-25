@@ -1,0 +1,12 @@
+---
+# Uses:
+# - ansible_user
+# - deployment_app_root
+
+- name: "Changing the owner of app_root folder"
+  file:
+    path: "{{ deployment_app_root }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    recurse: yes
+  become: yes

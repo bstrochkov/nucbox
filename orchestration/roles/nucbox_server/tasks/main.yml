@@ -8,6 +8,9 @@
     repo: "{{ app_repo }}"
     dest: "{{ deployment_app_root }}"
     update: no
+  become: yes
+
+- import_tasks: chown_app_root.yml
 
 - import_tasks: get_plex_claim_token.yml
   when: env.PLEX_CLAIM_TOKEN is undefined
