@@ -11,5 +11,10 @@
   tasks:
 
   - import_tasks: roles/nucbox_server/tasks/fill_env_file.yml
+  - name: "Updating the app"
+    git:
+      repo: "{{ app_repo }}"
+      dest: "{{ deployment_app_root }}"
+      update: yes
   - import_tasks: roles/nucbox_server/tasks/restart_docker.yml
 
