@@ -15,8 +15,5 @@
       name: nucbox_server
     when: not _env_file_info.stat.exists
 
-  - command: docker-compose up -d
-    args:
-      chdir: "{{ deployment_app_root }}"
-    become: yes
+  - import_tasks: roles/nucbox_server/tasks/restart_docker.yml
     when: not _env_file_info.stat.exists

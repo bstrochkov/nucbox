@@ -13,5 +13,3 @@ services:
       - ${PLEX_HOST_CONFIG_DIR}:/config
       - ${PLEX_HOST_TRANSCODE_DIR}:/transcode
       - ${PLEX_HOST_DATA_DIR}:/data
-  helloworld:
-    image: hello-world
