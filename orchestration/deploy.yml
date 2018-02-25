@@ -1,0 +1,21 @@
+---
+# Deploy to production stage
+
+#TODO: Init inventory file
+
+- import_playbook: install.yml
+
+- name: "Deploying nucbox app"
+  hosts: "{{ override_hosts | default('prod') }}"
+
+  tasks:
+
+  - import_tasks: tasks/fill_env_file.yml
+  - name: "Updating the app"
+    git:
+      repo: "{{ app_repo }}"
+      dest: "{{ deployment_app_root }}"
+      update: yes
+    notify:
+      - "nucbox_server / restart docker-compose"
+

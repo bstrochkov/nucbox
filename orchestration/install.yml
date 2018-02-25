@@ -1,0 +1,16 @@
+---
+# Uses:
+# - deployment_app_root
+
+- name: "Installing nucbox to the new environment"
+  hosts: "{{ override_hosts | default('prod') }}"
+
+  tasks:
+
+  - name: "Checking if environment settings file is present"
+    stat: path="{{ deployment_app_root }}/.env"
+    register: _env_file_info
+
+  - import_role:
+      name: nucbox_server
+    when: not _env_file_info.stat.exists

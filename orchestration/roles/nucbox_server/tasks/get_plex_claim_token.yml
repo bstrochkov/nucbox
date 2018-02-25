@@ -1,0 +1,42 @@
+---
+# Sets:
+# - env.PLEX_CLAIM_TOKEN
+
+- prompt:
+    msg:
+      - say: "Your login on Plex.tv"
+      - ask: _plex_user
+
+- prompt:
+    msg:
+      - say: "Your password"
+      - ask: _plex_password
+
+- name: "Requesting API"
+  uri:
+    url: "https://plex.tv/api/claim/token.json"
+    method: GET
+    force_basic_auth: yes
+    user: "{{ _plex_user }}"
+    password: "{{ _plex_password }}"
+    body_format: json
+    return_content: yes
+  register: _plex_api_claim_response
+  ignore_errors: yes
+
+- set_fact:
+    _plex_claim_token: "{{ _plex_api_claim_response.json.token }}"
+  when: _plex_api_claim_response|succeeded
+
+- prompt:
+    msg:
+      - say: "Unable to retrieve a claim token. Please get it manually and type in here"
+      - ask: _plex_claim_token
+  when: _plex_api_claim_response|failed
+
+- set_fact:
+    _env_add:
+      PLEX_CLAIM_TOKEN: "{{ _plex_claim_token }}"
+
+- set_fact:
+    env: "{{ env | combine(_env_add) }}"

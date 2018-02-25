@@ -1,0 +1,15 @@
+---
+# Uses:
+# - env
+# - deployment_app_root
+
+- name: "Cloning the repository"
+  git:
+    repo: "{{ app_repo }}"
+    dest: "{{ deployment_app_root }}"
+    update: no
+
+- import_tasks: get_plex_claim_token.yml
+  when: env.PLEX_CLAIM_TOKEN is undefined
+
+- import_tasks: fill_env_file.yml
