@@ -7,9 +7,18 @@ services:
     hostname: nucbox-plex${PLEX_HOST_SUFFIX}
     network_mode: host
     environment:
-      - TZ=${PLEX_TZ}
+      - TZ=${GENERAL_TZ}
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
     volumes:
       - ${PLEX_HOST_CONFIG_DIR}:/config
       - ${PLEX_HOST_TRANSCODE_DIR}:/transcode
       - ${PLEX_HOST_DATA_DIR}:/data
+  htpcm:
+    container_name: htpcm
+    image: linuxserver/htpcmanager
+    ports:
+      - 8085:8085/tcp
+    environment:
+      - TZ=${GENERAL_TZ}
+    volumes:
+      - ${HTPCM_HOST_CONFIG_DIR}:/config

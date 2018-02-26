@@ -10,6 +10,11 @@
     update: no
   become: yes
 
+- name: "Making dcmp executable"
+  file:
+    path: "{{ deployment_app_root }}/dcmp"
+    mode: u+x,g+x,o+x
+
 - import_tasks: chown_app_root.yml
 
 - import_tasks: get_plex_claim_token.yml

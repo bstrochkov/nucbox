@@ -2,9 +2,10 @@
 # Variables here are applicable to development hosts only
 
 env:
-  PLEX_TZ: "Europe/Moscow"
-  PLEX_HOST_CONFIG_DIR: "~/nucbox/plex/config"
-  PLEX_HOST_TRANSCODE_DIR: "~/nucbox/plex/transcode"
-  PLEX_HOST_DATA_DIR: "~/nucbox/plex/data"
+  GENERAL_TZ: "Europe/Moscow"
+  PLEX_HOST_CONFIG_DIR: "/Users/b.strochkov/nucbox/plex/config"
+  PLEX_HOST_TRANSCODE_DIR: "/Users/b.strochkov/nucbox/plex/transcode"
+  PLEX_HOST_DATA_DIR: "/Users/b.strochkov/nucbox/plex/data"
   PLEX_HOST_SUFFIX: "-dev"
-deployment_app_root: "~/opt/nucbox"
+  HTPCM_HOST_CONFIG_DIR: "/Users/b.strochkov/nucbox/htpcm/config"
+deployment_app_root: "/Users/b.strochkov/opt/nucbox"
