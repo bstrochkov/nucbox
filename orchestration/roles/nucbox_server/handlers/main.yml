@@ -1,10 +1,2 @@
 ---
 # Handlers
-# Uses:
-# - deployment_app_root
-
-- name: "nucbox_server / restart docker-compose"
-  command: ./dcmp up -d
-  args:
-    chdir: "{{ deployment_app_root }}"
-  become: yes
