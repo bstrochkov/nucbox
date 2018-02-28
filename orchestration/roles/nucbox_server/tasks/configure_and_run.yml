@@ -1,0 +1,6 @@
+---
+
+- import_tasks: fill_env_file.yml
+- import_tasks: run_docker.yml
+- import_tasks: configure_plex.yml
+- import_tasks: restart_docker.yml

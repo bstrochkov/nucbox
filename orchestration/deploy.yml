@@ -1,5 +1,10 @@
 ---
 # Deploy to production stage
+# Use:
+# - override_hosts
+# - app_repo
+# - deployment_app_root
+# - ansible_user
 
 #TODO: Init inventory file
 
@@ -7,14 +12,29 @@
 
 - name: "Deploying nucbox app"
   hosts: "{{ override_hosts | default('prod') }}"
+  vars:
+    _current_path: "."
 
   tasks:
 
-  - import_tasks: roles/nucbox_server/tasks/fill_env_file.yml
+  - command: git clean -fd
+    args:
+      chdir: "{{ deployment_app_root }}"
+    when: deploy_current_dir is undefined
+
   - name: "Updating the app"
     git:
       repo: "{{ app_repo }}"
       dest: "{{ deployment_app_root }}"
       update: yes
-  - import_tasks: roles/nucbox_server/tasks/restart_docker.yml
+      force: yes
+    when: deploy_current_dir is undefined
+
+  - name: "Updating the app from current directory"
+    synchronize:
+      src: "{{ _current_path | realpath }}/"
+      dest: "{{ deployment_app_root }}"
+    when: deploy_current_dir is defined
+
+  - import_tasks: roles/nucbox_server/tasks/configure_and_run.yml
 

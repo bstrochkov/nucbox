@@ -2,8 +2,8 @@
 # Uses:
 # - deployment_app_root
 
-- name: "Restarting docker compose"
-  command: ./dcmp restart
+- name: "Running docker compose up"
+  command: ./dcmp up -d
   args:
     chdir: "{{ deployment_app_root }}"
   become: yes

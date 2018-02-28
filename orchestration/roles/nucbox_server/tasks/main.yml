@@ -20,4 +20,4 @@
 - import_tasks: get_plex_claim_token.yml
   when: env.PLEX_CLAIM_TOKEN is undefined
 
-- import_tasks: fill_env_file.yml
+- import_tasks: configure_and_run.yml

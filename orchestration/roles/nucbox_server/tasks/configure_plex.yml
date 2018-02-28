@@ -1,0 +1,17 @@
+---
+
+- set_fact:
+    _pref_file_path: "{{ env['PLEX_HOST_CONFIG_DIR'] }}/Library/Application Support/Plex Media Server/Preferences.xml"
+
+- name: "Checking if we need to configure allowedHosts"
+  command: "grep \".*Preferences.*allowedNetworks\" \"{{ _pref_file_path }}\""
+  register: _grep_result
+  ignore_errors: yes
+
+- name: "Configuring allowedHosts"
+  lineinfile:
+    path: "{{ _pref_file_path }}"
+    regexp: (<Preferences.*)(\/>)
+    line: \1 allowedNetworks="htpcm" \2
+    backrefs: yes
+  when: _grep_result|failed
