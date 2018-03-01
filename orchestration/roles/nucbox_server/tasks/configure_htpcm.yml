@@ -1,0 +1,12 @@
+---
+# Uses:
+# - env
+
+- name: "Checking if HTPCM config file is present"
+  stat: path="{{ env['HTPCM_HOST_CONFIG_DIR'] }}/database.db"
+  register: _database_file_info
+
+- copy:
+    dest: "{{ env['HTPCM_HOST_CONFIG_DIR'] }}/"
+    src: ../files/htpcm/database.db
+  when: not _database_file_info.stat.exists

@@ -12,6 +12,6 @@
   lineinfile:
     path: "{{ _pref_file_path }}"
     regexp: (<Preferences.*)(\/>)
-    line: \1 allowedNetworks="htpcm" \2
+    line: \1 allowedNetworks="192.168.25.0/255.255.255.0,127.0.0.1" \2
     backrefs: yes
   when: _grep_result|failed
