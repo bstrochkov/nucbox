@@ -1,9 +1,0 @@
----
-# Uses:
-# - deployment_app_root
-
-- name: "Restarting docker compose"
-  command: ./dcmp restart
-  args:
-    chdir: "{{ deployment_app_root }}"
-  become: yes

@@ -1,3 +1,0 @@
-#!/bin/sh
-OS_TYPE=$(uname -s | tr '[:upper:]' '[:lower:]')
-docker-compose -f docker-compose.yml -f docker-compose-host-$OS_TYPE.yml "$@"
