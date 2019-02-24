@@ -24,4 +24,5 @@ services:
     network_mode: host
     volumes:
     - ./volumes/nginx/html:/usr/share/nginx/html
+    - ./volumes/nginx/conf.d:/etc/nginx/conf.d
 
