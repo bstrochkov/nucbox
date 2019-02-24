@@ -18,3 +18,10 @@ services:
     - TZ=${TIMEZONE}
     volumes:
     - ./volumes/htpcm/config:/config
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+    - ./volumes/nginx/html:/usr/share/nginx/html
+

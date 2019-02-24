@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome file</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css"/>
+</head>
+
+<body class="stackedit">
+<div class="stackedit__html"><h1 id="nucbox---home-media-and-utility-server">Nucbox - home media and utility server</h1>
+    <p>##Services:</p>
+    <ul>
+        <li>Plex: <a href="/:32400">here</a></li>
+        <li>HTPC Manager: <a href="/:8085">here</a></li>
+    </ul>
+    <p>##Initial configuration:<br>
+        ###Plex</p>
+    <p>If the claim token is not added during initial configuration you will need to use ssh tunneling to gain access
+        and setup the server for first run. During first run you setup the server to make it available and configurable.
+        However, this setup option will only be triggered if you access it over <a href="http://localhost:32400/web">http://localhost:32400/web</a>,
+        it will not be triggered if you access it over http://ip_of_server:32400/web. If you are setting up PMS on a
+        headless server, you can use a SSH tunnel to link <a href="http://localhost:32400/web">http://localhost:32400/web</a>
+        (on your current computer) to <a href="http://localhost:32400/web">http://localhost:32400/web</a> (on the
+        headless server running PMS):</p>
+    <p><code>ssh username@ip_of_server -L 32400:localhost:32400 -N</code></p>
+</div>
+</body>
+
+</html>
