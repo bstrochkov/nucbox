@@ -18,6 +18,17 @@ services:
     - TZ=${TIMEZONE}
     volumes:
     - ./volumes/htpcm/config:/config
+  couchpotato:
+    image: linuxserver/couchpotato
+    restart: unless-stopped
+    network_mode: host
+    environment:
+    - TZ=${TIMEZONE}
+    - UMASK_SET=022
+    volumes:
+    - ./volumes/couchpotato/config:/config
+    - ./volumes/couchpotato/downloads:/downloads
+    - ./volumes/media:/movies
   nginx:
     image: nginx
     restart: unless-stopped
