@@ -1,0 +1,20 @@
+version: '3'
+services:
+  plex:
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    environment:
+    - TZ=${TIMEZONE}
+    network_mode: host
+    volumes:
+    - ./volumes/plex/config:/config
+    - ./volumes/plex/transcode:/transcode
+    - ./volumes/media:/data
+  htpcm:
+    image: linuxserver/htpcmanager
+    restart: unless-stopped
+    network_mode: host
+    environment:
+    - TZ=${TIMEZONE}
+    volumes:
+    - ./volumes/htpcm/config:/config
