@@ -27,7 +27,7 @@ services:
     - UMASK_SET=022
     volumes:
     - ./volumes/couchpotato/config:/config
-    - ./volumes/couchpotato/downloads:/downloads
+    - ./volumes/downloads:/downloads
     - ./volumes/media:/movies
   qbittorrent:
     image: linuxserver/qbittorrent
@@ -39,6 +39,7 @@ services:
     - WEBUI_PORT=8080
     volumes:
     - ./volumes/qbittorrent/config:/config
+    - ./volumes/downloads:/downloads
   nginx:
     image: nginx
     restart: unless-stopped
