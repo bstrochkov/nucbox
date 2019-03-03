@@ -41,6 +41,13 @@ services:
     - ./volumes/qbittorrent/config:/config
     - ./volumes/downloads:/downloads
     - ./volumes/media:/media
+  yandexdisk:
+    image: madiedinro/ydisk-container
+    restart: on-failure
+    command: /bin/true
+    volumes:
+    - ./volumes/yandex.disk/config:/root
+    - ./volumes/media/Photos:/ydisk/Фотокамера
   nginx:
     image: nginx
     restart: unless-stopped
