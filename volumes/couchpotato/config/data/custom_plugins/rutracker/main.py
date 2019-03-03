@@ -23,7 +23,7 @@ class rutracker(TorrentProvider, MovieProvider):
         'login' : baseurl + 'login.php',
         'login_check': baseurl + 'privmsg.php',
         'detail' : baseurl + 'viewtopic.php?t=%s',
-        'search' : baseurl + 'tracker.php?nm=%s&o=7&c=14&f=313',
+        'search' : baseurl + 'tracker.php?nm=%s',
         'download' : baseurl + 'dl.php?t=%s',
     }
 
@@ -36,7 +36,7 @@ class rutracker(TorrentProvider, MovieProvider):
         if len(title) == 0:
             log.debug('Skipping. Reason: Title is empty')
             return
-            
+
         log.debug('Searching rutracker for %s' % (title))
 
         if len(title) < 2:
@@ -108,7 +108,7 @@ class rutracker(TorrentProvider, MovieProvider):
                     log.debug('Seed: %d' % torrent_seeders)
                     log.debug('Leech: %d' % torrent_leechers)
                     log.debug('Age: %s' % torrent_age)
-                    
+
                     results.append({
                         'id': torrent_id,
                         'name': torrent_name,
@@ -137,7 +137,7 @@ class rutracker(TorrentProvider, MovieProvider):
         return True
 
     loginCheckSuccess = loginSuccess
-    
+
     # Input format: Translated Title / Original Title (year) rest/of[the]name
     # Output format: Original.Title.(year).[resolution].rest.of.the.name
     def formatTitle(self, raw_title):
@@ -174,11 +174,11 @@ class rutracker(TorrentProvider, MovieProvider):
         # year = m.group()
 
         # title_split = title.split(year)
-                  
+
         # # Keep only last title name (nnm uses '/' to delimit title names in different languages)
         # title_only = title_split[0].split('/')[-1].strip()
         # title_only = re.sub('[ \:]', '.', title_only)
-        
+
         # rest = re.sub('[^0-9a-zA-Z]+', '.', title_split[1])
 
         # # Resolution (1080p, 720p and etc)
@@ -189,13 +189,13 @@ class rutracker(TorrentProvider, MovieProvider):
         #     resolution = m.group().replace('.','')
         #     rest = rest.replace(resolution, '')
         #     resolution = '[' + resolution + ']'
-            
+
         # title = title_only + '.' + year + '.' + resolution + '.' + rest
 
         title = re.sub('\.\.+', '.', title)
         title = re.sub('(^\.)|(\.$)', '', title)
 
         return title
-    
+
     def calculateAge(self, date_str):
         return (datetime.today() - datetime.strptime(date_str, '%d-%m-%Y')).days
