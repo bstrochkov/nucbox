@@ -40,6 +40,7 @@ services:
     volumes:
     - ./volumes/qbittorrent/config:/config
     - ./volumes/downloads:/downloads
+    - ./volumes/media:/media
   nginx:
     image: nginx
     restart: unless-stopped
