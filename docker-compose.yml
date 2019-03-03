@@ -42,7 +42,7 @@ services:
     - ./volumes/downloads:/downloads
     - ./volumes/media:/media
   yandexdisk:
-    image: madiedinro/ydisk-container
+    image: bstrochkov/ydisk-container
     restart: on-failure
     command: /bin/true
     volumes:
