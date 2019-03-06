@@ -42,12 +42,11 @@ services:
     - ./volumes/downloads:/downloads
     - ./volumes/media:/media
   yandexdisk:
-    image: strochkov/ydisk-container:latest
-    restart: on-failure
-    command: /bin/true
+    image: cszubert/odrive-cli
+    restart: unless-stopped
+    network_mode: host
     volumes:
-    - ./volumes/yandex.disk/config:/root
-    - ./volumes/media/Photos:/ydisk/Фотокамера
+    - ./volumes/media/Photos:/odrive/yandex.disk/bstrochkov
   nginx:
     image: nginx
     restart: unless-stopped
