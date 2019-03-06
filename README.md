@@ -4,7 +4,7 @@
 - Plex: [here](/plex)    
 - HTPC Manager: [here](/htpcm)    
 - Couchpotato: [here](/couchpotato)
-- QBittorrent: [here](/qbittorrent)  
+- QBittorrent: [here](/qbittorrent) (click and hit refresh button in the browser)
     
 ## Initial configuration: 
 ### Install Docker

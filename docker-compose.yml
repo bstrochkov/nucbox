@@ -41,12 +41,15 @@ services:
     - ./volumes/qbittorrent/config:/config
     - ./volumes/downloads:/downloads
     - ./volumes/media:/media
-  yandexdisk:
-    image: cszubert/odrive-cli
+  duplicati:
+    image: linuxserver/duplicati
     restart: unless-stopped
     network_mode: host
+    environment:
+    - TZ=${TIMEZONE}
     volumes:
-    - ./volumes/media/Photos:/odrive/yandex.disk/bstrochkov
+    - ./volumes/duplicati/config:/config
+    - ./volumes/media/Photos:/backups
   nginx:
     image: nginx
     restart: unless-stopped
