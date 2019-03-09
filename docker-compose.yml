@@ -41,15 +41,6 @@ services:
     - ./volumes/qbittorrent/config:/config
     - ./volumes/downloads:/downloads
     - ./volumes/media:/media
-  duplicati:
-    image: linuxserver/duplicati
-    restart: unless-stopped
-    network_mode: host
-    environment:
-    - TZ=${TIMEZONE}
-    volumes:
-    - ./volumes/duplicati/config:/config
-    - ./volumes/media/Photos:/backups
   nginx:
     image: nginx
     restart: unless-stopped
