@@ -41,25 +41,6 @@ services:
     - ./volumes/qbittorrent/config:/config
     - ./volumes/downloads:/downloads
     - ./volumes/media:/media
-  radarr:
-    image: linuxserver/radarr
-    restart: unless-stopped
-    network_mode: host
-    environment:
-    - TZ=${TIMEZONE}
-    volumes:
-    - ./volumes/radarr/config:/config
-    - ./volumes/media:/movies
-    - ./volumes/downloads:/downloads
-  jackett:
-    image: linuxserver/jackett
-    restart: unless-stopped
-    network_mode: host
-    environment:
-    - TZ=${TIMEZONE}
-    volumes:
-    - ./volumes/jackett/config:/config
-    - /dev/null:/downloads
   nginx:
     image: nginx
     restart: unless-stopped
