@@ -10,25 +10,6 @@ services:
     - ./volumes/plex/config:/config
     - ./volumes/plex/transcode:/transcode
     - ./volumes/media:/data
-  htpcm:
-    image: linuxserver/htpcmanager
-    restart: unless-stopped
-    network_mode: host
-    environment:
-    - TZ=${TIMEZONE}
-    volumes:
-    - ./volumes/htpcm/config:/config
-  couchpotato:
-    image: linuxserver/couchpotato
-    restart: unless-stopped
-    network_mode: host
-    environment:
-    - TZ=${TIMEZONE}
-    - UMASK_SET=022
-    volumes:
-    - ./volumes/couchpotato/config:/config
-    - ./volumes/downloads:/downloads
-    - ./volumes/media:/movies
   qbittorrent:
     image: linuxserver/qbittorrent
     restart: unless-stopped
