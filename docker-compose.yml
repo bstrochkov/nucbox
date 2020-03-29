@@ -29,4 +29,23 @@ services:
     volumes:
     - ./volumes/nginx/html:/usr/share/nginx/html
     - ./volumes/nginx/conf.d:/etc/nginx/conf.d
+  vouch:
+    image: voucher/vouch-proxy
+    restart: unless-stopped
+    volumes:
+      - ./volumes/vouch/config:/config
+      - ./volumes/vouch/data:/data
+  netdata:
+    image: netdata/netdata
+    hostname: media.borisa.net # set to fqdn of host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - PGID=999
 
