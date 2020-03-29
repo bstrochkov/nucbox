@@ -38,7 +38,7 @@ services:
       - ./volumes/vouch/data:/data
   netdata:
     image: netdata/netdata
-    hostname: media.borisa.net # set to fqdn of host
+    hostname: sysmon.borisa.net # set to fqdn of host
     ports:
       - 19999:19999
     cap_add:
