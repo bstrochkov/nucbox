@@ -124,14 +124,14 @@ vouch:
 oauth:
 
   provider: oidc
-    client_id: 0oa51ejdgvR9Hc17i4x6
-    client_secret: 1xbQY6Q7r4SJ4rQTRzuwCZNRn51BaIh888W3lSLx
-    auth_url: https://dev-538043.okta.com/oauth2/default/v1/authorize
-    token_url: https://dev-538043.okta.com/oauth2/default/v1/token
-    user_info_url: https://dev-538043.okta.com/oauth2/default/v1/userinfo
-    scopes:
-      - openid
-      - email
-    # Set the callback URL to the domain that Vouch is running on
-    callback_url: http://sso.borisa.net/auth
+  client_id: 0oa51ejdgvR9Hc17i4x6
+  client_secret: 1xbQY6Q7r4SJ4rQTRzuwCZNRn51BaIh888W3lSLx
+  auth_url: https://dev-538043.okta.com/oauth2/default/v1/authorize
+  token_url: https://dev-538043.okta.com/oauth2/default/v1/token
+  user_info_url: https://dev-538043.okta.com/oauth2/default/v1/userinfo
+  scopes:
+    - openid
+    - email
+  # Set the callback URL to the domain that Vouch is running on
+  callback_url: http://sso.borisa.net/auth
 
