@@ -28,7 +28,7 @@ vouch:
 #  - borisa.net
 
   # set allowAllUsers: true to use Vouch Proxy to just accept anyone who can authenticate at the configured provider
-   allowAllUsers: true
+  allowAllUsers: true
 
   # Setting publicAccess: true will accept all requests, even without a cookie.
   # If the user is logged in, the cookie will be validated and the user header will be set.
