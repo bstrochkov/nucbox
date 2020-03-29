@@ -33,14 +33,14 @@ services:
   vouch:
     image: voucher/vouch-proxy
     restart: unless-stopped
-    ports:
-      - 19999:19999
     volumes:
       - ./volumes/vouch/config:/config
       - ./volumes/vouch/data:/data
   netdata:
     image: netdata/netdata
     hostname: media.borisa.net # set to fqdn of host
+    ports:
+      - 19999:19999
     cap_add:
       - SYS_PTRACE
     security_opt:
