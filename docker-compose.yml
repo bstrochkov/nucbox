@@ -13,7 +13,6 @@ services:
   qbittorrent:
     image: linuxserver/qbittorrent
     restart: unless-stopped
-    network_mode: host
     environment:
     - TZ=${TIMEZONE}
     - UMASK_SET=022
