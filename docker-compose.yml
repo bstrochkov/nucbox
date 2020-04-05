@@ -32,6 +32,8 @@ services:
   vouch:
     image: voucher/vouch-proxy
     restart: unless-stopped
+    ports:
+    - 9090:9090
     volumes:
       - ./volumes/vouch/config:/config
       - ./volumes/vouch/data:/data
