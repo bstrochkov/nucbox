@@ -5,7 +5,6 @@ services:
     restart: unless-stopped
     environment:
     - TZ=${TIMEZONE}
-    network_mode: host
     volumes:
     - ./volumes/plex/config:/config
     - ./volumes/plex/transcode:/transcode
