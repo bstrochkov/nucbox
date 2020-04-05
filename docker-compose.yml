@@ -3,6 +3,7 @@ services:
   plex:
     image: plexinc/pms-docker
     restart: unless-stopped
+    network_mode: host
     environment:
     - TZ=${TIMEZONE}
     volumes:
@@ -26,12 +27,6 @@ services:
     ports:
     - 80:80
     - 443:443
-    - 3005:3005
-    - 8324:8324
-    - 1900:1900
-    - 32410:32410
-    - "32412-32414"
-    - 32469:32469
     volumes:
     - ./volumes/nginx/html:/usr/share/nginx/html
     - ./volumes/nginx/conf.d:/etc/nginx/conf.d
