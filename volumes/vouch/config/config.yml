@@ -64,6 +64,7 @@ vouch:
     httpOnly: true
     # Set cookie maxAge to 0 to delete the cookie every time the browser is closed.
     maxAge: 14400
+    domain: borisa.net
 
   session:
     # name of session variable stored locally
