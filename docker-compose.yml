@@ -13,8 +13,6 @@ services:
   qbittorrent:
     image: linuxserver/qbittorrent
     restart: unless-stopped
-    ports:
-      - 1080:1080
     environment:
     - TZ=${TIMEZONE}
     - UMASK_SET=022
@@ -31,6 +29,7 @@ services:
     volumes:
     - ./volumes/nginx/html:/usr/share/nginx/html
     - ./volumes/nginx/conf.d:/etc/nginx/conf.d
+    - /etc/letsencrypt/:/etc/letsencrypt
   vouch:
     image: voucher/vouch-proxy
     restart: unless-stopped
