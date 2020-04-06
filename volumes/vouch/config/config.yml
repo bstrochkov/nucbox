@@ -114,7 +114,7 @@ vouch:
     file: data/vouch_bolt.db
 
   # test_url - add this URL to the page which vouch displays
-  test_url: http://sso.borisa.net
+  test_url: https://sso.borisa.net
   # webapp - WIP for web interface to vouch (mostly logs)
   # webapp: true
 
@@ -134,5 +134,5 @@ oauth:
     - openid
     - email
   # Set the callback URL to the domain that Vouch is running on
-  callback_url: http://sso.borisa.net/auth
+  callback_url: https://sso.borisa.net/auth
 
